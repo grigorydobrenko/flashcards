@@ -56,3 +56,14 @@
     background-color: var(--color-dark-100);
   }
 }
+
+.label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: var(--color-light-100);
+
+  &.disabled {
+    color: var(--color-dark-100);
+  }
+}

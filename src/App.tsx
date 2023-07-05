@@ -7,7 +7,7 @@ export function App() {
     <div style={{ width: '300px' }}>
       <Button>Button</Button>
       <Input label={'input'} />
-      <Checkbox />
+      <Checkbox label={'checkbox'} />
     </div>
   )
 }
