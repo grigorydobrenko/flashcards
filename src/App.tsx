@@ -1,11 +1,11 @@
 import { Button } from './components/ui/button'
-import { Input } from './components/ui/input/input.tsx'
+import { Input } from './components/ui/input'
 
 export function App() {
   return (
-    <div>
+    <div style={{ width: '300px' }}>
       <Button>Button</Button>
-      <Input label={'input'} type={'password'} />
+      <Input label={'input'} />
     </div>
   )
 }
