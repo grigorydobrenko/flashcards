@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import { FC, useState } from 'react'
 
 import * as RadixCheckbox from '@radix-ui/react-checkbox'
 import { clsx } from 'clsx'
