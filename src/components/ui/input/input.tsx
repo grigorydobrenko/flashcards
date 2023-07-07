@@ -2,7 +2,7 @@ import { ChangeEvent, ComponentProps, forwardRef, useState } from 'react'
 
 import { clsx } from 'clsx'
 
-import { Eye, EyeOff, Search, Close } from '../../../assets/icons'
+import { Close, Eye, EyeOff, Search } from '../../../assets/icons'
 import { Typography } from '../typography'
 
 import s from './input.module.scss'
