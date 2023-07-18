@@ -1,4 +1,4 @@
-import { ChangeEvent, ComponentProps, forwardRef, useState } from 'react'
+import { ChangeEvent, ComponentProps, forwardRef, useState, ComponentPropsWithoutRef } from 'react'
 
 import { clsx } from 'clsx'
 
@@ -7,7 +7,7 @@ import { Typography } from '../typography'
 
 import s from './input.module.scss'
 
-export interface InputProps extends ComponentProps<'input'> {
+export interface InputProps extends ComponentPropsWithoutRef<'input'> {
   label?: string
   errorMessage?: string
   containerProps?: ComponentProps<'div'>
