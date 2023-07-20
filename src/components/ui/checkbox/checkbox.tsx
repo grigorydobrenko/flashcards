@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 
 import * as RadixCheckbox from '@radix-ui/react-checkbox'
 import { clsx } from 'clsx'
@@ -19,15 +19,14 @@ export type CheckboxProps = {
 }
 
 export const Checkbox: FC<CheckboxProps> = ({
-  checked: propChecked,
+  checked,
+  onChange,
   disabled,
   required,
   label,
   id,
   className,
 }) => {
-  const [checked, setChecked] = useState(propChecked)
-
   const classNames = {
     container: clsx(className),
     root: clsx(s.root, checked && s.checked),
@@ -45,7 +44,7 @@ export const Checkbox: FC<CheckboxProps> = ({
             required={required}
             checked={checked}
             disabled={disabled}
-            onCheckedChange={() => setChecked(prevState => !prevState)}
+            onCheckedChange={onChange}
             className={classNames.root}
           >
             <RadixCheckbox.Indicator>
