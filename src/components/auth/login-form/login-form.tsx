@@ -1,44 +1,43 @@
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-
 import { Button } from '../../ui/button'
+import { Card } from '../../ui/card'
 import { ControlledInput, ControlledCheckbox } from '../../ui/controlled'
+import { useLoginForm } from '../../ui/controlled/useLoginForm.ts'
+import { Typography } from '../../ui/typography'
 
-const schema = z.object({
-  login: z.string().trim().nonempty('EnterLogin').min(3, 'Login must be at least 3 characters'),
-  password: z
-    .string()
-    .trim()
-    .nonempty('EnterPassword')
-    .min(8, 'Password must be at least 8 characters'),
-  email: z.string().trim().email('Invalid email').nonempty('Enter email'),
-  rememberMe: z.boolean().optional(),
-})
+import s from './login-form.module.scss'
 
-type Form = z.infer<typeof schema>
-
-export const LoginForm = () => {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Form>({
-    resolver: zodResolver(schema),
-    mode: 'onSubmit',
-  })
-
-  console.log(errors)
-
-  const onSubmitHandler = handleSubmit(data => console.log(data))
+export const LoginForm = ({ onSubmit }: any) => {
+  const { handleSubmit, control } = useLoginForm(onSubmit)
 
   return (
-    <form onSubmit={onSubmitHandler}>
-      <ControlledInput label={'first name'} name={'login'} control={control} />
-      <ControlledInput label={'last name'} name={'password'} control={control} />
-      <ControlledInput label={'email'} name={'email'} control={control} />
-      <ControlledCheckbox name={'rememberMe'} control={control} />
-      <Button type={'submit'}>Submit</Button>
-    </form>
+    <Card className={s.card}>
+      <Typography as={'h1'} variant={'large'} className={s.title}>
+        Login In
+      </Typography>
+      <form onSubmit={handleSubmit} className={s.form}>
+        <ControlledInput
+          label={'Email'}
+          name={'email'}
+          control={control}
+          containerProps={{ className: s.login }}
+        />
+        <ControlledInput
+          type={'password'}
+          label={'Password'}
+          name={'password'}
+          control={control}
+          containerProps={{ className: s.login }}
+        />
+        <ControlledCheckbox
+          label={'Remember Me'}
+          name={'rememberMe'}
+          control={control}
+          className={s.rememberMe}
+        />
+        <Button type={'submit'} fullWidth>
+          Submit
+        </Button>
+      </form>
+    </Card>
   )
 }
